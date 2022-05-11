@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EvenementController!{% endblock %}
+
+{% block body %}
+<form method="get">
+<input type="text" name="search">
+<input type="submit" value="search">
+</form>
+<h1> Liste des evenments </h1>
+        <table class="table table-striped" >
+<thead >
+<th>
+<tr>
+<td>Club</td>
+<td>Evenement</td>
+<td> Date</td>
+<td> Action</td>
+</tr>
+</th>
+</thead>
+<tbody>
+{% for item in evts %}
+<tr>
+
+<td> {{ item.clubs.nom }}</td>
+<td> {{ item.titre }}</td>
+<td> {{ item.date | date('d-m-Y')}}</td>
+<td> <a href="{{ path('evenement_feli', { 'id' :item.id }) }}">Participer</a> </td>
+
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}
